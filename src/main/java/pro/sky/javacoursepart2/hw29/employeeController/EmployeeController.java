@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import pro.sky.javacoursepart2.hw29.employeeService.EmployeeService;
 import pro.sky.javacoursepart2.hw29.model.Employee;
 
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -64,74 +63,6 @@ public class EmployeeController {
         return employees.findEmployee(firstName, middleName, lastName);
     }
 
-    @GetMapping("/departments/all")
-    public List<Employee> findAllEmployeesSortedByDepartment() {
-        return employees.findAllEmployeesSortedByDepartment();
-    }
-
-    @GetMapping(value = "/departments/all", params = "departmentId")
-    public List<Employee> findEmployeesByDepartment(@RequestParam(value = "departmentId") int department) {
-        return employees.findEmployeesByDepartment(department);
-    }
-
-    @GetMapping(value = "/departments/min-salary")
-    public Employee minSalaryEmployee() {
-        return employees.minSalaryEmployee();
-    }
-
-    @GetMapping(value = "/departments/min-salary", params = "departmentId")
-    public Employee minSalaryEmployee(@RequestParam(value = "departmentId") int department) {
-        return employees.minSalaryEmployee(department);
-    }
-
-    @GetMapping(value = "/departments/max-salary")
-    public Employee maxSalaryEmployee() {
-        return employees.maxSalaryEmployee();
-    }
-
-    @GetMapping(value = "/departments/max-salary", params = "departmentId")
-    public Employee maxSalaryEmployee(@RequestParam(value = "departmentId") int department) {
-        return employees.maxSalaryEmployee(department);
-    }
-
-    @GetMapping("/departments/total-salary")
-    public double expencesSalary() {
-        return employees.expencesSalary();
-    }
-
-    @GetMapping(value = "/departments/total-salary", params = "departmentId")
-    public double expencesSalary(@RequestParam(value = "departmentId") int department) {
-        return employees.expencesSalary(department);
-    }
-
-    @GetMapping("/departments/average-salary")
-    public double averageSalary() {
-        return employees.averageSalary();
-    }
-
-    @GetMapping(value = "/departments/average-salary", params = "departmentId")
-    public double averageSalary(@RequestParam(value = "departmentId") int department) {
-        return employees.averageSalary(department);
-    }
-
-    @GetMapping(value = "/departments/increase-salary", params = "percent")
-    public Map<String, Employee> increaseSalary(@RequestParam(value = "percent") double percent) {
-        return employees.increaseSalary(percent);
-    }
-
-    @GetMapping(value = "/departments/increase-salary", params = {"departmentId", "percent"})
-    public Map<String, Employee> increaseSalary(@RequestParam(value = "departmentId") int department,
-                                                @RequestParam(value = "percent") double percent) {
-        return employees.increaseSalary(department, percent);
-    }
-
-    @GetMapping(value = "/departments/increase-salary", params = {"firstName", "middleName", "lastName", "percent"})
-    public Employee increaseSalary(@RequestParam(value = "firstName") String firstName,
-                                   @RequestParam(value = "middleName") String middleName,
-                                   @RequestParam(value = "lastName") String lastName,
-                                   @RequestParam(value = "percent") double percent) {
-        return employees.increaseSalary(firstName, middleName, lastName, percent);
-    }
 
     @GetMapping("/edit")
     public Employee editEmployee(@RequestParam(value = "firstName") String firstName,
@@ -141,4 +72,9 @@ public class EmployeeController {
                                  @RequestParam(value = "salary") double salary) {
         return employees.editEmployee(firstName, middleName, lastName, department, salary);
     }
+    @GetMapping("/names")
+    public String printNames() {
+        return employees.printNames();
+    }
+
 }

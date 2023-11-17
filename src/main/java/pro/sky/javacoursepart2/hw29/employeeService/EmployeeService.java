@@ -1,5 +1,6 @@
 package pro.sky.javacoursepart2.hw29.employeeService;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import pro.sky.javacoursepart2.hw29.model.Employee;
 
 import java.util.List;
@@ -17,6 +18,10 @@ public interface EmployeeService {
     List<Employee> findAllEmployeesSortedByDepartment();
 
     List <Employee> findEmployeesByDepartment(int department);
+
+    Map<String, Employee> employeesWithSalaryLowerOrEqualThen(@RequestParam(value = "salary") double salaryLimit);
+
+    Map<String, Employee> employeesWithSalaryHigherOrEqualThen(@RequestParam(value = "salary") int salaryLimit);
 
     Employee minSalaryEmployee();
 
@@ -41,4 +46,6 @@ public interface EmployeeService {
     Map<String, Employee> increaseSalary(int department, double percent);
 
     Employee increaseSalary(String firstName, String middleName, String lastName, double percent);
+
+    String printNames();
 }

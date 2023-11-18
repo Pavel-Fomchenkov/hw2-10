@@ -1,11 +1,12 @@
-package pro.sky.javacoursepart2.hw29.employeeController;
+package pro.sky.javacoursepart2.hw29.controller;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pro.sky.javacoursepart2.hw29.employeeService.EmployeeService;
 import pro.sky.javacoursepart2.hw29.model.Employee;
+import pro.sky.javacoursepart2.hw29.service.employeeService.EmployeeService;
 
 import java.util.Map;
 
@@ -14,7 +15,7 @@ import java.util.Map;
 public class EmployeeController {
     private final EmployeeService employees;
 
-    private EmployeeController(EmployeeService employees) {
+    public EmployeeController(EmployeeService employees) {
         this.employees = employees;
     }
 

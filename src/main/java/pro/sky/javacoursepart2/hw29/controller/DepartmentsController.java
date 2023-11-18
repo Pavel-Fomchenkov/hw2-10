@@ -1,10 +1,10 @@
-package pro.sky.javacoursepart2.hw29.employeeController;
+package pro.sky.javacoursepart2.hw29.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pro.sky.javacoursepart2.hw29.employeeService.EmployeeService;
+import pro.sky.javacoursepart2.hw29.service.departmentsService.DepartmentsService;
 import pro.sky.javacoursepart2.hw29.model.Employee;
 
 import java.util.List;
@@ -12,16 +12,22 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/departments")
-public class DepartmentsController {
-    private final EmployeeService employees;
+public class DepartmentsController implements DepartmentsService {
 
-    private DepartmentsController(EmployeeService employees) {
+    private final DepartmentsService employees;
+    public DepartmentsController(DepartmentsService employees) {
         this.employees = employees;
     }
 
+
     @GetMapping("/all")
-    public List<Employee> findAllEmployeesSortedByDepartment() {
-        return employees.findAllEmployeesSortedByDepartment();
+    public Map<Integer, List <Employee>> mapAllEmployeesByDepartment() {
+        return employees.mapAllEmployeesByDepartment();
+    }
+
+    @GetMapping("/all/list")
+    public List<Employee> listAllEmployeesSortedByDepartment() {
+        return employees.listAllEmployeesSortedByDepartment();
     }
 
     @GetMapping(value = "/all", params = "departmentId")

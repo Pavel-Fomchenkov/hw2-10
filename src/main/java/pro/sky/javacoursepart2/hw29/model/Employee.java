@@ -54,10 +54,6 @@ public class Employee {
         return lastName;
     }
 
-    public static int getCounter() {
-        return counter;
-    }
-
     public int getId() {
         return id;
     }

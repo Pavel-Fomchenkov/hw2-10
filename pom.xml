@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pro.sky.java-course-part2</groupId>
-	<artifactId>hw2-9</artifactId>
+	<artifactId>hw2-10</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>hw2-9</name>
 	<description>courseWork01 refactored to Spring</description>
@@ -27,6 +27,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.14.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

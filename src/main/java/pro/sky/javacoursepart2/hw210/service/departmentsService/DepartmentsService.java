@@ -1,6 +1,6 @@
-package pro.sky.javacoursepart2.hw29.service.departmentsService;
+package pro.sky.javacoursepart2.hw210.service.departmentsService;
 
-import pro.sky.javacoursepart2.hw29.model.Employee;
+import pro.sky.javacoursepart2.hw210.model.Employee;
 
 import java.util.List;
 import java.util.Map;

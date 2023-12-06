@@ -1,12 +1,11 @@
-package pro.sky.javacoursepart2.hw29.controller;
+package pro.sky.javacoursepart2.hw210.controller;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pro.sky.javacoursepart2.hw29.model.Employee;
-import pro.sky.javacoursepart2.hw29.service.employeeService.EmployeeService;
+import pro.sky.javacoursepart2.hw210.model.Employee;
+import pro.sky.javacoursepart2.hw210.service.employeeService.EmployeeService;
 
 import java.util.Map;
 

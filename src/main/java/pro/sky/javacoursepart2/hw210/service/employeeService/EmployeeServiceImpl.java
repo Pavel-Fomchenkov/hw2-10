@@ -1,11 +1,11 @@
-package pro.sky.javacoursepart2.hw29.service.employeeService;
+package pro.sky.javacoursepart2.hw210.service.employeeService;
 
 import org.springframework.stereotype.Service;
-import pro.sky.javacoursepart2.hw29.exceptions.EmployeeAlreadyAddedException;
-import pro.sky.javacoursepart2.hw29.exceptions.EmployeeNotFoundException;
-import pro.sky.javacoursepart2.hw29.exceptions.EmployeeStorageIsFullException;
-import pro.sky.javacoursepart2.hw29.model.Employee;
-import pro.sky.javacoursepart2.hw29.model.EmployeeStorage;
+import pro.sky.javacoursepart2.hw210.exceptions.EmployeeAlreadyAddedException;
+import pro.sky.javacoursepart2.hw210.exceptions.EmployeeNotFoundException;
+import pro.sky.javacoursepart2.hw210.exceptions.EmployeeStorageIsFullException;
+import pro.sky.javacoursepart2.hw210.model.Employee;
+import pro.sky.javacoursepart2.hw210.model.EmployeeStorage;
 
 import java.util.*;
 
@@ -26,7 +26,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee addEmployee(String firstName, String middleName, String lastName, int department, double salary) {
+    public Employee addEmployee(String firstNameInput, String middleNameInput, String lastNameInput, int department, double salary) {
+        String firstName = EmployeeStorage.checkAndCapitalizeName(firstNameInput);
+        String middleName = EmployeeStorage.checkAndCapitalizeName(middleNameInput);
+        String lastName = EmployeeStorage.checkAndCapitalizeName(lastNameInput);
         if (employees.size() == maxEmployees) {
             throw new EmployeeStorageIsFullException("База данных переполнена.");
         }
@@ -43,7 +46,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                     employees.put(key, e);
                     return e;
                 });
-        return null;
+        return employees.get(key);
 
 //        //              OLD METHOD
 //        if (employees.size() == maxEmployees) {
@@ -60,7 +63,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee removeEmployee(String firstName, String middleName, String lastName) {
+    public Employee removeEmployee(String firstNameInput, String middleNameInput, String lastNameInput) {
+        String firstName = EmployeeStorage.checkAndCapitalizeName(firstNameInput);
+        String middleName = EmployeeStorage.checkAndCapitalizeName(middleNameInput);
+        String lastName = EmployeeStorage.checkAndCapitalizeName(lastNameInput);
         String key = generateEmployeesMapKey(lastName, firstName, middleName);
         return employees.keySet().stream()
                 .filter(k -> k.equals(key))
@@ -79,7 +85,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee findEmployee(String firstName, String middleName, String lastName) {
+    public Employee findEmployee(String firstNameInput, String middleNameInput, String lastNameInput) {
+        String firstName = EmployeeStorage.checkAndCapitalizeName(firstNameInput);
+        String middleName = EmployeeStorage.checkAndCapitalizeName(middleNameInput);
+        String lastName = EmployeeStorage.checkAndCapitalizeName(lastNameInput);
         String key = generateEmployeesMapKey(lastName, firstName, middleName);
         return employees.entrySet().stream()
                 .filter(e -> key.equals(e.getKey()))

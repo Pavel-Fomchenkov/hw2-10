@@ -1,6 +1,6 @@
-package pro.sky.javacoursepart2.hw29.service.employeeService;
+package pro.sky.javacoursepart2.hw210.service.employeeService;
 
-import pro.sky.javacoursepart2.hw29.model.Employee;
+import pro.sky.javacoursepart2.hw210.model.Employee;
 
 import java.util.Map;
 
@@ -9,7 +9,7 @@ public interface EmployeeService {
 
     Map<String, Employee> getEmployees();
 
-    Employee removeEmployee(String lastName, String firstName, String middleName);
+    Employee removeEmployee(String firstName, String middleName, String lastleName);
 
     Employee findEmployee(String firstName, String middleName, String lastName);
 
